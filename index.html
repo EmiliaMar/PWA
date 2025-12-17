@@ -1,11 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="BookTracker - Track books and save quotes"
+    />
+    <meta name="theme-color" content="#8B4513" />
+
+    <title>BookTracker - Reading Journal</title>
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav class="bottom-nav">
+      <button class="nav-btn">
+        <span>Library</span>
+      </button>
+      <button class="nav-btn">
+        <span>Add</span>
+      </button>
+      <button class="nav-btn">
+        <span>Quotes</span>
+      </button>
+      <button class="nav-btn">
+        <span>Statistics</span>
+      </button>
+    </nav>
+
+    <div class="page active">
+      <header class="page-header">
+        <h1>Library</h1>
+      </header>
+
+      <div class="filters">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Reading</button>
+        <button class="filter-btn">Finished</button>
+        <button class="filter-btn">Wishlist</button>
+      </div>
+
+      <div class="books-grid"></div>
+
+      <div class="empty-state">
+        <p>No books in this category</p>
+        <button class="btn-secondary">Add your first book</button>
+      </div>
+    </div>
+
+    <div class="page">
+      <header class="page-header">
+        <h1>Add Book</h1>
+      </header>
+
+      <form class="book-form">
+        <div class="form-group">
+          <label for="book-title">Book title *</label>
+          <input
+            type="text"
+            id="book-title"
+            placeholder="e.g. The Witcher"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="book-author">Author *</label>
+          <input
+            type="text"
+            id="book-author"
+            placeholder="e.g. Andrzej Sapkowski"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="book-genre">Genre *</label>
+          <select id="book-genre" required>
+            <option value="">-- Select genre --</option>
+            <option value="fiction">Fiction</option>
+            <option value="nonfiction">Non-fiction</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="scifi">Sci-Fi</option>
+            <option value="biography">Biography</option>
+            <option value="history">History</option>
+            <option value="poetry">Poetry</option>
+            <option value="thriller">Thriller</option>
+            <option value="romance">Romance</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="book-status">Status *</label>
+          <select id="book-status" required>
+            <option value="">-- Select status --</option>
+            <option value="wishlist">To read</option>
+            <option value="reading">Currently reading</option>
+            <option value="finished">Finished</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Cover (optional)</label>
+          <button type="button" class="btn-secondary">Add cover</button>
+          <canvas style="display: none"></canvas>
+        </div>
+
+        <button type="submit" class="btn-primary">Save book</button>
+      </form>
+    </div>
+
+    <div class="page">
+      <header class="page-header">
+        <h1>Quotes</h1>
+      </header>
+
+      <button class="btn-primary btn-large">Add quote</button>
+
+      <div class="quotes-list"></div>
+
+      <div class="empty-state">
+        <p>You don’t have any quotes yet</p>
+      </div>
+    </div>
+
+    <div class="page">
+      <header class="page-header">
+        <h1>Statistics</h1>
+      </header>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Finished</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Currently reading</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Wishlist</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Quotes</div>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        <h2>Book genres</h2>
+        <canvas width="400" height="200"></canvas>
+      </div>
+
+      <div class="empty-state">
+        <p>Add books to see statistics</p>
+      </div>
+    </div>
+
+    <div class="modal"></div>
+  </body>
 </html>
