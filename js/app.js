@@ -69,7 +69,7 @@ function initDB() {
     };
   });
 }
-
+// add book function
 function addBook(book) {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(["books"], "readwrite");
@@ -94,7 +94,7 @@ function addBook(book) {
     };
   });
 }
-
+// get all books function
 function getAllBooks() {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(["books"], "readonly");
@@ -112,7 +112,7 @@ function getAllBooks() {
     };
   });
 }
-
+// get book by id function
 function getBookById(id) {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(["books"], "readonly");
@@ -129,7 +129,7 @@ function getBookById(id) {
     };
   });
 }
-
+// update book function
 function updateBook(id, updates) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -165,7 +165,7 @@ function updateBook(id, updates) {
     }
   });
 }
-
+// delete book function
 function deleteBook(id) {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(["books"], "readwrite");
@@ -179,6 +179,86 @@ function deleteBook(id) {
 
     request.onerror = () => {
       console.error("delete book error:", request.error);
+      reject(request.error);
+    };
+  });
+}
+
+// quotes
+function addQuote(quote) {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(["quotes"], "readwrite");
+    const store = transaction.objectStore("quotes");
+
+    const quoteData = {
+      ...quote,
+      date: new Date().toISOString(),
+    };
+
+    const request = store.add(quoteData);
+
+    request.onsuccess = () => {
+      console.log("quote added, ID:", request.result);
+      resolve(request.result);
+    };
+
+    request.onerror = () => {
+      console.error("add quote error:", request.error);
+      reject(request.error);
+    };
+  });
+}
+
+function getAllQuotes() {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(["quotes"], "readonly");
+    const store = transaction.objectStore("quotes");
+    const request = store.getAll();
+
+    request.onsuccess = () => {
+      console.log("loaded", request.result.length, "quotes");
+      resolve(request.result);
+    };
+
+    request.onerror = () => {
+      console.error("get quotes error:", request.error);
+      reject(request.error);
+    };
+  });
+}
+
+function getQuotesByBook(bookId) {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(["quotes"], "readonly");
+    const store = transaction.objectStore("quotes");
+    const index = store.index("bookId");
+    const request = index.getAll(bookId);
+
+    request.onsuccess = () => {
+      console.log("loaded", request.result.length, "quotes for book", bookId);
+      resolve(request.result);
+    };
+
+    request.onerror = () => {
+      console.error("get quotes by book error:", request.error);
+      reject(request.error);
+    };
+  });
+}
+
+function deleteQuote(id) {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(["quotes"], "readwrite");
+    const store = transaction.objectStore("quotes");
+    const request = store.delete(id);
+
+    request.onsuccess = () => {
+      console.log("quote deleted, ID:", id);
+      resolve();
+    };
+
+    request.onerror = () => {
+      console.error("delete quote error:", request.error);
       reject(request.error);
     };
   });
@@ -217,7 +297,7 @@ function loadPageData(pageName) {
 
   switch (pageName) {
     case "library":
-      console.log("Library loaded");
+      renderLibrary();
       break;
     case "add":
       console.log("Form ready");
@@ -237,6 +317,88 @@ navButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const targetPage = button.dataset.page;
     showPage(targetPage);
+  });
+});
+
+let currentFilter = "all";
+
+async function renderLibrary() {
+  console.log("rendering library, filter:", currentFilter);
+
+  const booksGrid = document.getElementById("books-grid");
+  const emptyState = document.getElementById("empty-state");
+
+  try {
+    const allBooks = await getAllBooks();
+
+    let books = allBooks;
+    if (currentFilter !== "all") {
+      books = allBooks.filter((book) => book.status === currentFilter);
+    }
+
+    console.log("showing", books.length, "books");
+
+    if (books.length === 0) {
+      booksGrid.innerHTML = "";
+      emptyState.style.display = "block";
+      return;
+    }
+
+    emptyState.style.display = "none";
+
+    booksGrid.innerHTML = books
+      .map(
+        (book) => `
+            <div class="book-card" data-id="${book.id}">
+                <div class="book-cover ${book.cover ? "has-image" : ""}" 
+                     ${
+                       book.cover
+                         ? `style="background-image: url(${book.cover})"`
+                         : ""
+                     }>
+                </div>
+                <div class="book-title" title="${escapeHtml(book.title)}">
+                    ${escapeHtml(book.title)}
+                </div>
+                <div class="book-author" title="${escapeHtml(book.author)}">
+                    ${escapeHtml(book.author)}
+                </div>
+                <span class="book-status status-${book.status}">
+                    ${getStatusText(book.status)}
+                </span>
+            </div>
+        `
+      )
+      .join("");
+  } catch (error) {
+    console.error("error rendering library:", error);
+    booksGrid.innerHTML = '<p style="color: red;">Error loading books</p>';
+  }
+}
+
+function getStatusText(status) {
+  const statusMap = {
+    reading: "Reading",
+    finished: "Finished",
+    wishlist: "To Read",
+  };
+  return statusMap[status] || status;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    filterButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentFilter = btn.dataset.filter;
+    renderLibrary();
   });
 });
 
