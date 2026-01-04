@@ -38,12 +38,8 @@ async function renderLibrary() {
       .map(
         (book) => `
             <div class="book-card" data-id="${book.id}">
-                <div class="book-cover ${book.cover ? "has-image" : ""}" 
-                     ${
-                       book.cover
-                         ? `style="background-image: url(${book.cover})"`
-                         : ""
-                     }>
+                <div class="book-cover has-image" 
+                     style="background-image: url(${book.cover || 'assets/512.png'})">
                 </div>
                 <div class="book-title" title="${escapeHtml(book.title)}">
                     ${escapeHtml(book.title)}

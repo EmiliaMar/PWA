@@ -47,8 +47,9 @@ function loadPageData(pageName) {
       renderQuotes();
       break;
     case "stats":
-      console.log("statistics loaded");
+      renderStats();
       break;
+
     default:
       console.log("unknown page");
   }
@@ -80,6 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // initialize books module
   initBooks(); // from books.js
   initQuotes(); // from quotes.js
+  initStats();
 
   // show initial page
   showPage("library");
