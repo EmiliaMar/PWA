@@ -307,3 +307,122 @@ h1 {
     text-align: center;
     font-size: 14px;
 }
+
+.quotes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quote-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.quote-text {
+    font-size: 16px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 15px;
+}
+
+.quote-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.quote-book {
+    flex: 1;
+}
+
+.quote-book small {
+    font-size: 11px;
+}
+
+.quote-date {
+    white-space: nowrap;
+}
+
+.quote-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.btn-icon:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.quote-input-methods {
+    display: flex;
+    gap: 10px;
+}
+
+.quote-input-methods button {
+    flex: 1;
+}
+
+.quote-input-methods button.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+#ocr-video {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    background: #000;
+}
+
+#ocr-preview {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+    .quote-meta {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .quote-input-methods {
+        flex-direction: column;
+    }
+}

@@ -108,7 +108,7 @@
 
         <div class="form-group">
           <label>Cover (optional)</label>
-          
+
           <div class="cover-buttons">
             <button type="button" id="camera-btn" class="btn-secondary">
               Take photo
@@ -117,22 +117,31 @@
               Choose from gallery
             </button>
           </div>
-          
-          <input type="file" id="file-input" accept="image/*" style="display: none;">
-          
-          <div id="camera-container" style="display: none;">
+
+          <input
+            type="file"
+            id="file-input"
+            accept="image/*"
+            style="display: none"
+          />
+
+          <div id="camera-container" style="display: none">
             <video id="camera-video" autoplay playsinline></video>
             <div class="camera-controls">
               <button type="button" id="capture-btn" class="btn-primary">
                 Capture
               </button>
-              <button type="button" id="cancel-camera-btn" class="btn-secondary">
+              <button
+                type="button"
+                id="cancel-camera-btn"
+                class="btn-secondary"
+              >
                 ✖ Cancel
               </button>
             </div>
           </div>
-          
-          <canvas id="cover-preview" style="display: none;"></canvas>
+
+          <canvas id="cover-preview" style="display: none"></canvas>
         </div>
 
         <button type="submit" class="btn-primary">Save book</button>
@@ -207,9 +216,12 @@
       </div>
     </div>
 
+    <!-- tesseract.js for ocr -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/db.js"></script>
     <script src="js/books.js"></script>
+    <script src="js/quotes.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

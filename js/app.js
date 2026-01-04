@@ -44,7 +44,7 @@ function loadPageData(pageName) {
       console.log("form ready");
       break;
     case "quotes":
-      console.log("quotes loaded");
+      renderQuotes();
       break;
     case "stats":
       console.log("statistics loaded");
@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // initialize books module
   initBooks(); // from books.js
+  initQuotes(); // from quotes.js
 
   // show initial page
   showPage("library");
