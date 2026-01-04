@@ -108,10 +108,31 @@
 
         <div class="form-group">
           <label>Cover (optional)</label>
-          <button type="button" id="cover-btn" class="btn-secondary">
-            Add cover
-          </button>
-          <canvas id="cover-preview" style="display: none"></canvas>
+          
+          <div class="cover-buttons">
+            <button type="button" id="camera-btn" class="btn-secondary">
+              Take photo
+            </button>
+            <button type="button" id="gallery-btn" class="btn-secondary">
+              Choose from gallery
+            </button>
+          </div>
+          
+          <input type="file" id="file-input" accept="image/*" style="display: none;">
+          
+          <div id="camera-container" style="display: none;">
+            <video id="camera-video" autoplay playsinline></video>
+            <div class="camera-controls">
+              <button type="button" id="capture-btn" class="btn-primary">
+                Capture
+              </button>
+              <button type="button" id="cancel-camera-btn" class="btn-secondary">
+                ✖ Cancel
+              </button>
+            </div>
+          </div>
+          
+          <canvas id="cover-preview" style="display: none;"></canvas>
         </div>
 
         <button type="submit" class="btn-primary">Save book</button>
@@ -172,7 +193,23 @@
     </div>
 
     <div id="quote-modal" class="modal"></div>
+    <div id="book-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close-book-modal">&times;</span>
+        <h2 id="modal-book-title"></h2>
+        <p id="modal-book-author"></p>
+        <p id="modal-book-genre"></p>
 
+        <div id="modal-book-status"></div>
+        <div id="modal-book-actions"></div>
+
+        <button id="delete-book-btn" class="btn-danger">Delete book</button>
+      </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/books.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
