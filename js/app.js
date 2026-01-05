@@ -92,4 +92,74 @@ document.addEventListener("DOMContentLoaded", async () => {
 // export to global scope
 window.showPage = showPage;
 
-// sw - todo
+// service worker registration
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/PWA/service-worker.js")
+      .then((registration) => {
+        console.log("service worker registered:", registration.scope);
+
+        // check for updates
+        registration.addEventListener("updatefound", () => {
+          const newWorker = registration.installing;
+          console.log("service worker update found");
+
+          newWorker.addEventListener("statechange", () => {
+            if (
+              newWorker.state === "installed" &&
+              navigator.serviceWorker.controller
+            ) {
+              console.log("new version available - reload to update");
+
+              // optionally show update notification
+              if (confirm("new version available! reload to update?")) {
+                newWorker.postMessage({ action: "skipWaiting" });
+                window.location.reload();
+              }
+            }
+          });
+        });
+      })
+      .catch((error) => {
+        console.error("service worker registration failed:", error);
+      });
+  });
+}
+
+const networkStatus = document.getElementById("network-status");
+const networkStatusText = document.getElementById("network-status-text");
+
+function updateNetworkStatus() {
+  if (navigator.onLine) {
+    networkStatusText.textContent = "back online! 🎉";
+    networkStatus.classList.add("online");
+    networkStatus.style.display = "block";
+
+    // hide after 3 seconds
+    setTimeout(() => {
+      networkStatus.style.display = "none";
+      networkStatus.classList.remove("online");
+      document.body.classList.remove("has-network-status");
+    }, 3000);
+  } else {
+    networkStatusText.textContent = "you are offline - working in offline mode";
+    networkStatus.style.display = "block";
+    document.body.classList.add("has-network-status");
+  }
+}
+
+window.addEventListener("online", () => {
+  console.log("network: online");
+  updateNetworkStatus();
+});
+
+window.addEventListener("offline", () => {
+  console.log("network: offline");
+  updateNetworkStatus();
+});
+
+// check initial status
+if (!navigator.onLine) {
+  updateNetworkStatus();
+}

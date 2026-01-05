@@ -498,3 +498,35 @@ h1 {
     font-size: 28px;
   }
 }
+
+.network-status {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #f44336;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 2000;
+    animation: slideDown 0.3s;
+}
+
+.network-status.online {
+    background: #4CAF50;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+body.has-network-status .page {
+    padding-top: 40px;
+}
