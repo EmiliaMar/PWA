@@ -133,7 +133,7 @@ function showAddQuoteModal() {
                         <video id="ocr-video" autoplay playsinline></video>
                         <div class="camera-controls">
                             <button type="button" id="ocr-capture-btn" class="btn-primary">
-                                📸 capture
+                                capture
                             </button>
                             <button type="button" id="ocr-cancel-btn" class="btn-secondary">
                                 ✖ cancel
@@ -141,7 +141,7 @@ function showAddQuoteModal() {
                         </div>
                     </div>
                     <button type="button" id="start-ocr-camera-btn" class="btn-secondary">
-                        📷 open camera
+                        open camera
                     </button>
                     <canvas id="ocr-preview" style="display: none;"></canvas>
                 </div>
@@ -280,12 +280,12 @@ async function saveManualQuote() {
 
   // validate
   if (!bookId) {
-    alert("please select a book");
+    alert("Please select a book");
     return;
   }
 
   if (!text) {
-    alert("please enter quote text");
+    alert("Please enter quote text");
     return;
   }
 
@@ -458,7 +458,6 @@ async function saveOcrQuote() {
       rawOcrText: text,
     });
 
-    alert("quote added! ");
     closeQuoteModal();
     renderQuotes();
 

@@ -39,7 +39,7 @@ async function renderLibrary() {
         (book) => `
             <div class="book-card" data-id="${book.id}">
                 <div class="book-cover has-image" 
-                     style="background-image: url(${book.cover || 'assets/512.png'})">
+                     style="background-image: url(${book.cover || 'assets/cover.jpg'})">
                 </div>
                 <div class="book-title" title="${escapeHtml(book.title)}">
                     ${escapeHtml(book.title)}
@@ -162,7 +162,6 @@ window.startReading = async function (bookId) {
     closeBookModal();
     renderLibrary();
 
-    alert("Started reading! 📖");
   } catch (error) {
     console.error("error starting reading:", error);
     alert("Failed to update book");
@@ -181,7 +180,6 @@ window.finishReading = async function (bookId) {
     closeBookModal();
     renderLibrary();
 
-    alert("Congratulations! Book finished! 🎉");
   } catch (error) {
     console.error("error finishing reading:", error);
     alert("Failed to update book");
@@ -237,7 +235,6 @@ function initBookForm() {
 
       console.log("Book saved with ID:", bookId);
 
-      alert("Book added successfully!");
       bookForm.reset();
 
   // reset cover
@@ -496,15 +493,14 @@ function initBookModalListeners() {
   document
     .getElementById("delete-book-btn")
     .addEventListener("click", async () => {
-      if (!confirm("Are you sure you want to delete this book?")) {
-        return;
-      }
+      // if (!confirm("Are you sure you want to delete this book?")) {
+      //   return;
+      // }
 
       try {
         await deleteBook(currentBookId);
         closeBookModal();
         renderLibrary();
-        alert("Book deleted");
       } catch (error) {
         console.error("error deleting book:", error);
         alert("Failed to delete book");
