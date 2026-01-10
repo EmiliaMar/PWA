@@ -132,7 +132,7 @@ const networkStatusText = document.getElementById("network-status-text");
 
 function updateNetworkStatus() {
   if (navigator.onLine) {
-    networkStatusText.textContent = "back online!";
+    networkStatusText.textContent = "Back online!";
     networkStatus.classList.add("online");
     networkStatus.style.display = "block";
 
