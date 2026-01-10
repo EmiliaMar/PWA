@@ -143,7 +143,7 @@ function updateNetworkStatus() {
       document.body.classList.remove("has-network-status");
     }, 3000);
   } else {
-    networkStatusText.textContent = "you are offline - working in offline mode";
+    networkStatusText.textContent = "You are offline - App is working in offline mode";
     networkStatus.style.display = "block";
     document.body.classList.add("has-network-status");
   }
