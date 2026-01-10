@@ -25,19 +25,19 @@
   --primary: var(--orange-500);
   --primary-dark: var(--orange-600);
   --primary-light: var(--orange-100);
-  
+
   --background: var(--orange-50);
   --card-bg: rgba(255, 255, 255, 0.7);
   --glass-bg: rgba(255, 255, 255, 0.4);
-  
+
   --text: var(--gray-900);
   --text-light: var(--gray-600);
   --text-muted: var(--gray-400);
-  
+
   --border: var(--gray-200);
   --shadow: 0 4px 20px rgba(249, 115, 22, 0.08);
   --shadow-lg: 0 10px 40px rgba(249, 115, 22, 0.12);
-  
+
   /* glass effect */
   --glass-border: rgba(255, 255, 255, 0.3);
   --glass-shadow: 0 8px 32px 0 rgba(249, 115, 22, 0.15);
@@ -51,8 +51,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
-               Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400;
   background: linear-gradient(135deg, var(--orange-50) 0%, var(--white) 100%);
   background-attachment: fixed;
@@ -72,7 +72,11 @@ button {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--orange-500) 0%,
+    var(--orange-600) 100%
+  );
   color: white;
   padding: 12px 24px;
   border-radius: 12px;
@@ -138,7 +142,11 @@ button {
   padding: 8px 12px;
   border-radius: 10px;
   transition: all 0.2s;
-  background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--orange-500) 0%,
+    var(--orange-600) 100%
+  );
   color: white;
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
@@ -196,7 +204,6 @@ textarea {
   min-height: 100px;
 }
 
-
 /* BOTTOM NAVIGATION */
 .bottom-nav {
   position: fixed;
@@ -233,7 +240,11 @@ textarea {
 }
 
 .nav-btn.active {
-  background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--orange-500) 0%,
+    var(--orange-600) 100%
+  );
   color: white;
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
@@ -268,7 +279,11 @@ h1 {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, var(--orange-600) 0%, var(--orange-400) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--orange-600) 0%,
+    var(--orange-400) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -309,7 +324,7 @@ h2 {
   font-size: 13px;
   cursor: pointer;
   transition: all 0.3s;
-    flex-shrink: 0; 
+  flex-shrink: 0;
   white-space: nowrap;
 }
 
@@ -319,7 +334,11 @@ h2 {
 }
 
 .filter-btn.active {
-  background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--orange-500) 0%,
+    var(--orange-600) 100%
+  );
   color: white;
   border-color: transparent;
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
@@ -406,7 +425,11 @@ h2 {
 }
 
 .status-wishlist {
-  background: linear-gradient(135deg, var(--orange-400) 0%, var(--orange-500) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--orange-400) 0%,
+    var(--orange-500) 100%
+  );
   color: white;
   box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
 }
@@ -676,7 +699,11 @@ h2 {
 }
 
 .quote-input-methods button.active {
-  background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--orange-500) 0%,
+    var(--orange-600) 100%
+  );
   color: white;
   border: none;
 }
@@ -740,7 +767,11 @@ h2 {
 .stat-number {
   font-size: 36px;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--orange-600) 0%, var(--orange-400) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--orange-600) 0%,
+    var(--orange-400) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -771,7 +802,6 @@ h2 {
   font-weight: 700;
   color: var(--orange-500);
   text-align: center;
-  
 }
 
 #genre-chart {
@@ -814,7 +844,7 @@ body.has-network-status .page {
 }
 
 /* RESPONSIVE */
- @media (max-width: 1024px) {
+@media (max-width: 1024px) {
   .books-grid {
     gap: 18px;
   }
@@ -1195,4 +1225,127 @@ body.has-network-status .page {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--orange-400);
+}
+
+/* ========================================
+   MOBILE SAFE AREA - iOS + Android
+   ======================================== */
+
+@supports (padding: max(0px)) {
+  /* Body safe area */
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  html {
+    height: -webkit-fill-available;
+  }
+
+  /* BOTTOM NAVIGATION*/
+  .bottom-nav {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-top: 12px;
+  }
+
+  .nav-btn {
+    margin: 0 6px;
+    min-width: 60px;
+    padding: 10px 12px;
+  }
+
+  /* PAGES */
+  .page {
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+    padding-top: max(24px, calc(env(safe-area-inset-top) + 16px));
+    padding-bottom: max(100px, calc(80px + env(safe-area-inset-bottom)));
+  }
+
+  /* FILTERS */
+  .filters {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    margin-bottom: 20px;
+  }
+
+  /* BOOKS GRID */
+  .books-grid {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  /* FORMS */
+  .book-form {
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+    padding-top: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    padding: 0 4px;
+  }
+
+  /* INPUTS - prevent zoom on iOS */
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  /* BUTTONS - touch targets */
+  button,
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  /* MODAL */
+  .modal-content {
+    margin: max(40px, calc(env(safe-area-inset-top) + 20px))
+      max(20px, env(safe-area-inset-right))
+      max(20px, env(safe-area-inset-bottom))
+      max(20px, env(safe-area-inset-left));
+  }
+
+  /* NETWORK STATUS */
+  .network-status {
+    top: max(10px, env(safe-area-inset-top));
+    left: max(16px, env(safe-area-inset-left));
+    right: max(16px, env(safe-area-inset-right));
+  }
+}
+
+/* iOS fixes */
+body {
+  overscroll-behavior-y: none;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 375px) {
+  .nav-btn {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
 }

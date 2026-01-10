@@ -66,12 +66,12 @@ async function renderQuotes() {
                     <button class="btn-icon" onclick="shareQuote(${
                       quote.id
                     })" title="share">
-                        copy
+                        Share
                     </button>
                     <button class="btn-icon" onclick="deleteQuoteWithConfirm(${
                       quote.id
                     })" title="delete">
-                        delete
+                        Delete
                     </button>
                 </div>
             </div>
