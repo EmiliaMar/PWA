@@ -2,7 +2,7 @@
 
 // service worker configuration
 
-const CACHE_NAME = "booktracker-v1.2.0";
+const CACHE_NAME = "booktracker-v1.4.0";
 const OFFLINE_URL = "/offline.html";
 
 // files to cache immediately on install

@@ -299,7 +299,6 @@ async function saveManualQuote() {
       rawOcrText: null,
     });
 
-    alert("quote added!");
     closeQuoteModal();
     renderQuotes();
   } catch (error) {

@@ -113,7 +113,7 @@ if ("serviceWorker" in navigator) {
               console.log("new version available - reload to update");
 
               // optionally show update notification
-              if (confirm("new version available! reload to update?")) {
+              if (confirm("New version of the application is available! Reload to update?")) {
                 newWorker.postMessage({ action: "skipWaiting" });
                 window.location.reload();
               }
@@ -132,7 +132,7 @@ const networkStatusText = document.getElementById("network-status-text");
 
 function updateNetworkStatus() {
   if (navigator.onLine) {
-    networkStatusText.textContent = "back online! 🎉";
+    networkStatusText.textContent = "back online!";
     networkStatus.classList.add("online");
     networkStatus.style.display = "block";
 

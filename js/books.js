@@ -39,7 +39,7 @@ async function renderLibrary() {
         (book) => `
             <div class="book-card" data-id="${book.id}">
                 <div class="book-cover has-image" 
-                     style="background-image: url(${book.cover || 'assets/cover.jpg'})">
+                     style="background-image: url(${book.cover || 'assets/book-covers/default-cover.jpg'})">
                 </div>
                 <div class="book-title" title="${escapeHtml(book.title)}">
                     ${escapeHtml(book.title)}
@@ -459,9 +459,9 @@ function initBookCamera() {
     if (oldMsg) oldMsg.remove();
 
     // create success message
-    const successMsg = document.createElement("div");
-    successMsg.className = "cover-success";
-    successMsg.textContent = "cover added!";
+    // const successMsg = document.createElement("div");
+    // successMsg.className = "cover-success";
+    // successMsg.textContent = "cover added!";
 
     // insert after preview
     coverPreview.parentNode.insertBefore(
