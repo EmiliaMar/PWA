@@ -1228,103 +1228,31 @@ body.has-network-status .page {
 }
 
 /* ========================================
-   MOBILE SAFE AREA - iOS + Android
+   MOBILE SAFE AREA
    ======================================== */
 
-@supports (padding: max(0px)) {
-  /* Body safe area */
+@supports (padding: env(safe-area-inset-left)) {
   body {
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
   }
 
-  html {
-    height: -webkit-fill-available;
-  }
-
-  /* BOTTOM NAVIGATION*/
   .bottom-nav {
-    padding-bottom: calc(16px + env(safe-area-inset-bottom));
-    padding-left: max(12px, env(safe-area-inset-left));
-    padding-right: max(12px, env(safe-area-inset-right));
-    padding-top: 12px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    padding-left: calc(8px + env(safe-area-inset-left));
+    padding-right: calc(8px + env(safe-area-inset-right));
   }
 
-  .nav-btn {
-    margin: 0 6px;
-    min-width: 60px;
-    padding: 10px 12px;
-  }
-
-  /* PAGES */
   .page {
-    padding-left: max(20px, env(safe-area-inset-left));
-    padding-right: max(20px, env(safe-area-inset-right));
-    padding-top: max(24px, calc(env(safe-area-inset-top) + 16px));
-    padding-bottom: max(100px, calc(80px + env(safe-area-inset-bottom)));
+    padding-left: calc(20px + env(safe-area-inset-left)) !important;
+    padding-right: calc(20px + env(safe-area-inset-right)) !important;
   }
+}
 
-  /* FILTERS */
-  .filters {
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
-    margin-bottom: 20px;
-  }
-
-  /* BOOKS GRID */
-  .books-grid {
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
-  }
-
-  /* FORMS */
-  .book-form {
-    padding-left: max(20px, env(safe-area-inset-left));
-    padding-right: max(20px, env(safe-area-inset-right));
-    padding-top: 20px;
-  }
-
-  .form-group {
-    margin-bottom: 20px;
-    padding: 0 4px;
-  }
-
-  /* INPUTS - prevent zoom on iOS */
-  input[type="text"],
-  input[type="email"],
-  select,
-  textarea {
-    font-size: 16px;
-    padding: 12px 16px;
-  }
-
-  /* BUTTONS - touch targets */
-  button,
-  .btn-primary,
-  .btn-secondary,
-  .btn-danger {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 12px 24px;
-    font-size: 16px;
-  }
-
-  /* MODAL */
-  .modal-content {
-    margin: max(40px, calc(env(safe-area-inset-top) + 20px))
-      max(20px, env(safe-area-inset-right))
-      max(20px, env(safe-area-inset-bottom))
-      max(20px, env(safe-area-inset-left));
-  }
-
-  /* NETWORK STATUS */
-  .network-status {
-    top: max(10px, env(safe-area-inset-top));
-    left: max(16px, env(safe-area-inset-left));
-    right: max(16px, env(safe-area-inset-right));
-  }
+/* iOS bounce fix */
+body {
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* iOS fixes */
@@ -1338,14 +1266,9 @@ body {
 }
 
 a,
-button {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive */
-@media (max-width: 375px) {
-  .nav-btn {
-    font-size: 12px;
-    padding: 8px 6px;
-  }
+button,
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+  -webkit-tap-highlight-color: rgba(249, 115, 22, 0.1);
 }
