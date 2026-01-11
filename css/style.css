@@ -1244,7 +1244,7 @@ body.has-network-status .page {
   }
 
   .bottom-nav {
-    padding-bottom: calc(2px + env(safe-area-inset-bottom));
+    padding-bottom: 8px !important;
   }
 
   /* .page {
