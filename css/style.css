@@ -1236,7 +1236,7 @@ body.has-network-status .page {
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
     min-height: -webkit-fill-available;
-    /* padding-top: calc(2px + env(safe-area-inset-top)); */
+    padding-top: calc(2px + env(safe-area-inset-top));
   }
 
   html {
