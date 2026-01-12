@@ -13,17 +13,9 @@
 - [Demo](#-demo)
 - [Funkcjonalności](#-funkcjonalności)
 - [Wykorzystane Technologie](#-wykorzystane-technologie)
-- [Wymagania PWA](#-wymagania-pwa)
-- [Instalacja](#-instalacja)
-- [Użytkowanie](#-użytkowanie)
 - [Struktura Projektu](#-struktura-projektu)
 - [Offline Mode](#-offline-mode)
 - [Natywne API](#-natywne-api)
-- [Deployment](#-deployment)
-- [Screenshoty](#-screenshoty)
-- [Znane Problemy](#-znane-problemy)
-- [Roadmap](#-roadmap)
-- [Autor](#-autor)
 
 ---
 
